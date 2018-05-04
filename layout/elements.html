@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Important Tag</title>
+    <meta http-equiv="refresh" content="2">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
+    <meta name="keywords" content="HTML5, Browsers, meta tags">
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is my description for this page">
+    <style>
+        td, tr {
+            padding: 15px;
+            color:white;
+            background-color: darkblue;
+        }
+        tr {
+            color:red;
+        }
+        h1 {
+            font-family: Consolas;
+            font-size: 50px;
+            text-align: center;
+        }
+        summary {
+            font-family: Calibri;
+            font-style: italic;
+        }
+        detail {
+            text-align: center;
+            font-size: .65em;
+        }
+        video {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper" style="height:100%; background-color: lightgray">Wrapper
+    <div id="banner" style="height: 100px; background-color: orange">
+        <h1>This is the Banner</h1>
+    </div>
+    <div id="nav" style="wrap-option: true; width: 200px; height: 100%; background-color: yellow; float: left;">
+        Nav
+        <!-- These just produce bullets -->
+        <ul type="square">
+            <li>
+                <ul type="disc">
+                    <li>ul 1 item 1</li>
+                    <li>ul 1 item 2</li>
+                </ul>
+            </li>
+            <li>ul 1 item 2</li>
+            <li>ul 1 item 3</li>
+        </ul>
+
+        <!-- These just sequential bullets -->
+        <ol type="1" start="0">
+            <li>
+                <!-- These just sequential bullets -->
+                <ol type="1" start="0">
+                    <li>ol 1 item 1</li>
+                    <li>
+                        <ul type="square">
+                            <li>ul 1 item 1</li>
+                            <li>ul 1 item 2</li>
+                        </ul>
+                    </li>
+                </ol>
+
+            </li>
+            <li>ol 1 item 2</li>
+            <li>ol 1 item 3</li>
+        </ol>
+
+        <!-- These produce lists with descriptions-->
+        <dl>
+            <dt>dt 1</dt>
+            <dd>            <!-- These just sequential bullets -->
+                <ul type="square">
+                    <li>ul 1 item 1</li>
+                    <li>ul 1 item 2</li>
+                </ul>
+            </dd>
+
+            <dt>dt 2</dt>
+            <dd>dd 2 item 2</dd>
+
+            <dt>dt 3</dt>
+            <dd>dd 3 item 3</dd>
+        </dl>
+    </div>
+    <div id="content" style="height: 100%; background-color: green">
+        <p>Content</p>
+        <table border="1" width="400">
+            <tr>
+                <th width="200">Computer Name</th><th width="100">Year Introduced</th><th width="100">Rating</th>
+            </tr>
+            <tr>
+                <td>Apple IIe</td><td>1981</td><td>***</td>
+            </tr>
+            <tr>
+                <td>Commodore 64</td><td>1982</td><td>****</td>
+            </tr>
+            <tr>
+                <td>TRS-80</td><td>1979</td><td>*****</td>
+            </tr>
+            <tr>
+                <td>Atari 400</td><td>1981</td><td>**</td>
+            </tr>
+        </table>
+        <section>
+            <intro><p>This is an introduction</p></intro>
+            <aside><p>This is an aside</p></aside>
+            <cite><p>This is a citation</p></cite>
+            <address><p>This is an address</p></address>
+            <summary><p>This is a summary</P></summary>
+        </section>
+        <section>
+            <p>This section deal with video and other multimedia output</p>
+            <video id="conference" width="260" height="147" controls>
+                <source src="videos/canaltown.mp4" type="video/mp4">    <!-- tries 1st -->
+                <source src="videos/canaltown.ogg" type="video/ogg">    <!-- tries next -->
+                <source src="videos/canaltown.avi" type="video/avi">    <!-- tries last -->
+                This browser does not support video
+            </video>
+            <object data="hanoi.swf" type="application/x-shockwave-flash" width="500" height="280">
+                <p>This flash element is not supported.</p>
+            </object>
+            <embed src="matchem.swf" width="500" height="280" type="application/>x-shockwave-flash">
+        </section>
+    </div>
+    <div id="footer" style="background-color: red;">
+        Footer
+        <p>Sgdrg sdrg srth sh dsaff cae ethrj yuru jku eragrwe ewf rst ytejh
+            cwf qef tye y5ereaf wdetgs rshtrt e jdghdsfdzfda gsfd hadff sagsdfh shg shg fdhs
+            sfhg gfhgsfhfad hhtd fgfgd fysf h srhttsfh trd
+            h rstfh
+        </p>
+    </div>
+</div>
+</body>
+</html>

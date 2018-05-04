@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>HTML Forms</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="Input Examples">
+    <style>
+        .banner {
+            height:100px;
+            width:100%;
+            background-color: darkgray;
+        }
+        .content {
+            height:100%;
+            width:100%;
+            background-color: gray;
+        }
+        .aside {
+            height: 100%;
+            float: left;
+            background-color: lightgray;
+            padding: 10px;
+        }
+        label {
+            width: 100px;
+        }
+        .wide {
+            width: 100%;
+        }
+
+    </style>
+    <script>
+        function getAge() {
+            alert("Number 1: " + document.getElementById('number1').value + "\n"
+                + "Number 2: " + document.getElementById('number2').value + "\n");
+        }
+    </script>
+</head>
+<body>
+<div id="wrapper" style=">Wrapper
+        <div id="banner" class="banner">
+<h1>Submitting Form Data</h1>
+</div>
+<div id="content" class="content">
+    <div id="nav" class="aside">
+        <dl type="none">
+            <dl>Navigation</dl>
+            <dt><a href="home.html">Using Forms</a></dt>
+        </dl>
+    </div>
+
+    <article>
+        <section>
+            <form
+                action="scripts/upload.php"
+                method="post"
+                enctype="multipart/form-data"
+                autocomplete="on"
+                <!-- use to not validate the form-->
+            >
+                <table width="584" height="434" border="0">
+                    <!-- name -->
+                    <tr>
+                        <td>Name:</td>
+                        <td>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Enter Name Here"
+                                required
+                                class="wide"
+                                maxlength="50"
+                            >
+                        </td>
+                    </tr>
+                    <!-- email -->
+                    <tr>
+                        <td>Email&nbspAddress:</td>
+                        <td>
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Enter email address"
+                                class="wide"
+                            >
+                        </td>
+                    </tr>
+                    <!-- password -->
+                    <tr>
+                        <td>Password:</td>
+                        <td>
+                            <input
+                                name="password"
+                                type="Password"
+                                placeholder="******"
+                                size="20"
+                                class="wide"
+                            ></td>
+                    </tr>
+                    <!-- comments -->
+                    <tr>
+                        <td>Comments:</td>
+                        <td>
+                            <textarea
+                                name="comments"
+                                placeholder="Enter your comments here (maximum 500 words)"
+                                autocomplete="on"
+                                cols="70"
+                                rows="10"
+                                class="wide"
+                                >
+                            </textarea>
+                        </td>
+                    </tr>
+                    <!-- Interested in checkbox -->
+                    <tr>
+                        <td>I'm Interested in</td>
+                        <td>
+                            <p>
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        name="ints[]"
+                                        value="TV Shows"
+                                        id="ints_0"
+                                    >
+                                    TV Shows
+                                </label>
+                                <label>
+                                    <input
+                                            type="checkbox"
+                                            name="ints[]"
+                                            value="News"
+                                            id="ints_1"
+                                    >
+                                    News
+                                </label>
+                                <label>
+                                    <input
+                                            type="checkbox"
+                                            name="ints[]"
+                                            value="Sports"
+                                            id="ints_2"
+                                    >
+                                    Sports
+                                </label>
+                                <label>
+                                    <input
+                                            type="checkbox"
+                                            name="ints[]"
+                                            value="TV Shows"
+                                            id="ints_3"
+                                    >
+                                    Movies
+                                </label>
+                            </p>
+                        </td>
+                    </tr>
+                    <!-- Subscribe radiobox-->
+                    <tr>
+                        <td>Subscribe to Newsletter?</td>
+                        <td>
+                            <label>
+                                <input type="radio" name="subscribe">
+                                Yes
+                            </label>
+                            <label>
+                                <input type="radio" name="subscribe">
+                                No
+                            </label>
+                        </td>
+                    </tr>
+                    <!-- date -->
+                    <tr>
+                        <td>Effective Date:</td>
+                        <td>
+                            <input type="date" name="time" value="2018-05-04">
+                        </td>
+                    </tr>
+                    <!-- submit button -->
+                    <tr>
+                        <td>
+                            Submit:
+                        </td>
+                        <td>
+                            <input type="submit" value="Press to submit" name="submit" class="wide"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </section>
+    </article>
+
+</div>
+<div id="footer" class="banner">
+    <p>Footer</p>
+</div>
+</div>
+</body>
+</html>

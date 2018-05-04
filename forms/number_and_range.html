@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Range and Sliders</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="Color Panels">
+    <style>
+        .banner {
+            height:100px;
+            width:100%;
+            background-color: darkgray;
+        }
+        .content {
+            height:100%;
+            width:100%;
+            background-color: gray;
+        }
+        .aside {
+            height: 100%;
+            float: left;
+            background-color: lightgray;
+            padding: 10px;
+        }
+        label {
+            width: 100px;
+        }
+        .wide {
+            width: 100%;
+        }
+
+    </style>
+    <script>
+        window.onload = function() {
+            document.getElementById("slider").addEventListener(
+                'change',
+                function () {
+                    document.getElementById('slideOut').innerHTML = document.getElementById('slider').value
+                }
+            );
+        };
+        function evalSlider() {
+            var sliderValue = document.getElementById('rating').value;
+            document.getElementById('sliderVal').innerHTML = sliderValue;
+        };
+    </script>
+</head>
+<body>
+<div id="wrapper" style=">Wrapper
+        <div id="banner" class="banner">
+<h1>Using Number Pickers</h1>
+</div>
+<div id="content" class="content">
+    <div id="nav" class="aside">
+        <dl type="none">
+            <dl>Navigation</dl>
+            <dt><a href="home.html">Using Forms</a></dt>
+        </dl>
+    </div>
+
+    <article>
+        <section>
+            <label>Number:</label>
+            <input type="number" min="50" max="100" value="50"/>
+            <br/>
+            <label>Range:</label>
+            <input id="slider" type="range" min="0" max="100" value="50"/>
+            <output id="slideOut"/>
+            <br/>
+        </section>
+        <section>
+            <form action="#" method="post">
+                Rate your Javascript Skills (0-100)
+                <input type="range" id="rating" min="0" max="100" onchange="evalSlider()"/>
+                <output id="sliderVal"></output>
+            </form>
+        </section>
+    </article>
+
+</div>
+<div id="footer" class="banner">
+    <p>Footer</p>
+</div>
+</div>
+</body>
+</html>
