@@ -186,10 +186,19 @@
                             Submit:
                         </td>
                         <td>
-                            <input type="submit" value="Press to submit" name="submit" class="wide"/>
+                            <table>
+                                <tr>
+                                    <td><input type="submit" value="Default" name="submit" class="wide" formaction="#"/></td>
+                                    <td><input type="submit" value="Top" name="submit" class="wide" formaction="#" formtarget="_top"/></td>
+                                    <td><input type="submit" value="Parent" name="submit" class="wide" formaction="#" formtarget="_parent"/></td>
+                                    <td><input type="submit" value="Self" name="submit" class="wide" formaction="#" formtarget="_self"/></td>
+                                    <td><input type="submit" value="Blank" name="submit" class="wide" formaction="#" formtarget="_blank"/></td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                 </table>
+
             </form>
         </section>
     </article>
