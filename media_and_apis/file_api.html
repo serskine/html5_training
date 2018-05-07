@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>File API</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is the main home page to all of my examples">
+    <style>
+        .banner {
+            height:100px;
+            width:100%;
+            background-color: darkgray;
+        }
+        .content {
+            height:100%;
+            width:100%;
+            background-color: gray;
+        }
+        .aside {
+            height: 100%;
+            float: left;
+            background-color: lightgray;
+            padding: 10px;
+        }
+        .strong {
+            font-weight: bold;
+            font-size: larger;
+        }
+        #output {
+            border: 1px solid black;
+        }
+
+    </style>
+    <script>
+      function handleFileSelect(evt) {
+          var files = evt.target.files; // File list object
+
+          alert("Handling " + files.length + " files!");
+
+          // List some properties
+          var output = [];
+
+          // Loop through each individual file
+          for(var i=0, f; f=files[i]; i++) {
+              output.push(
+                  "<li><strong>",
+                  escape(f.name),
+                  "</strong> (",
+                  f.type || "n/a",
+                  ") - ",
+                  f.size,
+                  " bytes, last modified: ",
+                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : "n/a",
+                  "</li>"
+              );
+              document.getElementById("list").innerHTML = "<ul>" + output.join("") + "</ul>";
+          }
+      }
+
+      window.onload = function() {
+          document.getElementById("files").addEventListener("change", handleFileSelect, false);
+      }
+
+    </script>
+</head>
+<body>
+<div id="wrapper" style=">Wrapper
+                        <div id="banner" class="banner">
+<h1>File API</h1>
+
+</div>
+<div id="content" class="content">
+    <div id="nav" class="aside">
+        <dl type="none">
+            <dl class="strong"></string>Navigation</dl>
+            <dt><a href="home.html">Media and Api's Home</a></dt>
+        </dl>
+    </div>
+
+    <article>
+        <p class="strong">Content</p>
+        <div>
+            <input type="file" id="files" name="files[]" multiple />
+            <output id="list"></output>
+        </div>
+    </article>
+</div>
+</body>
+</html>

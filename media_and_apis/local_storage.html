@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Session and Local Storage</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is the main home page to all of my examples">
+    <style>
+        .banner {
+            height:100px;
+            width:100%;
+            background-color: darkgray;
+        }
+        .content {
+            height:100%;
+            width:100%;
+            background-color: gray;
+        }
+        .aside {
+            height: 100%;
+            float: left;
+            background-color: lightgray;
+            padding: 10px;
+        }
+        .strong {
+            font-weight: bold;
+            font-size: larger;
+        }
+        #output {
+            border: 1px solid black;
+        }
+
+    </style>
+    <script>
+        var first, last, ofirst, olast;
+
+        window.onload = function() {
+            first = document.getElementById("first");
+            last = document.getElementById("last");
+            ofirst = document.getElementById("fnameOutput");
+            olast = document.getElementById("lnameOutput");
+            document.getElementById("storeData").addEventListener("click", storeData, false);
+            document.getElementById("retrieveData").addEventListener("click", retrieveData, false);
+        }
+
+        function storeData() {
+            <!-- perform storage -->
+            localStorage.firstname = first.value;
+            localStorage.lastname = last.value;
+            alert("Stored " + localStorage.firstname + " " + localStorage.lastname);
+        }
+
+        function retrieveData() {
+            ofirst.innerHTML = localStorage.firstname;
+            olast.innerHTML = localStorage.lastname;
+        }
+    </script>
+</head>
+<body>
+<div id="wrapper" style=">Wrapper
+                        <div id="banner" class="banner">
+<h1>Local Storage</h1>
+
+</div>
+<div id="content" class="content">
+    <div id="nav" class="aside">
+        <dl type="none">
+            <dl class="strong"></string>Navigation</dl>
+            <dt><a href="home.html">Media and Api's Home</a></dt>
+        </dl>
+    </div>
+
+    <article>
+        <p class="strong">Content</p>
+        <section>
+            <label>First Name:</label><input type="text" id="first"/><br/>
+            <label>Last Name:</label><input type="text" id="last"/><br/>
+            <button id="storeData">Store Button</button>
+        </section>
+        <section>
+            <div id="output">
+                First Name: <output id="fnameOutput"></output><br/>
+                Last Name: <output id="lnameOutput"></output><br/>
+            </div>
+            <button id="retrieveData">Retrieve Data</button>
+        </section>
+    </article>
+</div>
+</body>
+</html>

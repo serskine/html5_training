@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Query Selector</title>
-    <meta http-equiv="refresh" content="2">
+    <meta http-equiv="refresh" content="5">
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
 
     <meta name="author" content="Stuart Marr Erskine">
     <meta name="description" content="This is the main home page to all of my examples">
-    <style>
+    <style type="text/css">
+        .text {
+            font-: Calibri;
+            color: #ffd800;
+        }
         .banner {
             height:100px;
             width:100%;
@@ -29,9 +33,39 @@
             font-weight: bold;
             font-size: larger;
         }
-
+        .article {
+            background-color: yellow;
+            width:150px;
+            height: 40px;
+        }
+        .note {
+            background-color: green;
+            width:150px;
+            height: 40px;
+        }
     </style>
-    <script>
+    <script type="text/javascript">
+        function doIt1() {
+            var result = document.querySelector(".text");
+            document.getElementById("output1").innerHTML = result.innerHTML;
+        }
+        function doIt2() {
+            var result = document.querySelectorAll("a[href]");
+            for(var i=0; i<result.length; i++) {
+                document.getElementById("output2").innerHTML += result[i] + "<br>";
+            }
+        }
+        function doIt3() {
+            var result = document.querySelector("div.note, div.article");
+            document.getElementById("output").innerHTML = result.innerHTML;
+        }
+        function doIt4() {
+            var result = document.querySelectorAll("div.article");
+            for(var i=0; i<result.length; i++) {
+                document.getElementById("output").innerHTML += result[i].innerHTML + "<br>";
+            }
+            result[1].innerHTML = "Changed to article #3";
+        }
     </script>
 </head>
 <body>
@@ -50,8 +84,34 @@
 
     <article>
         <p class="strong">Content</p>
+        <!-- query selector example -->
         <section>
-            <div id="result"></div>
+            <span class="text">This is some text</span><br>
+            <span class="text">This is some more text</span><br>
+            <span class="text" id="output1">This is even more text</span><br>
+            <button id="doit1" onclick="doIt1()">Do It 1</button><br>
+        </section>
+        <!-- query select all example -->
+        <section>
+            <a href="http://www.google.com">Search Google</a><br>
+            <a href="http://www.yahoo.com">Search Yahoo!</a><br>
+            <a href="http://www.bing.com">Search Bing</a><br>
+            <br><br>
+            <button id="doit2" onclick="doIt2()">Do It 2</button><br>
+            <br>
+            <span id="output2"></span>
+        </section>
+        <!-- finding the first element -->
+        <section>
+            <div class="note">This is note 1</div><br>
+            <div class="article">This is article 1</div><br>
+            <div class="note">This is note 2</div><br>
+            <div class="article">This is article 2</div><br>
+            <br>
+            <button id="doit3" onclick="doIt3()">Do It 3</button><br>
+            <button id="doit4" onclick="doIt4()">Do It 4</button><br>
+            <br>
+            <span id="output"></span>
         </section>
     </article>
 </div>
