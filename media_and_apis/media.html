@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Using Audio</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is the main home page to all of my examples">
+    <style>
+        .banner {
+            height:100px;
+            width:100%;
+            background-color: darkgray;
+        }
+        .content {
+            height:100%;
+            width:100%;
+            background-color: gray;
+        }
+        .aside {
+            height: 100%;
+            float: left;
+            background-color: lightgray;
+            padding: 10px;
+        }
+        .strong {
+            font-weight: bold;
+            font-size: larger;
+        }
+        #output {
+            border: 1px solid black;
+        }
+
+    </style>
+    <script>
+        var player;   // Object that plays the audio
+        var durationOutput; // Object to be updated with the duration
+        var elapsedOutput; // Object to be updated with time elapsed
+        var myInterval; // Object to hold the interval object that calls a function every so often
+
+        var songs = [
+            "tolling-bell_daniel-simion.mp3",
+            "Maid%20with%20the%20Flaxen%20Hair.mp3",
+            "Kalimba.mp3",
+            "Sleep%20Away.mp3"
+        ];
+        var currentSong = 0;
+
+        window.onload = function() {
+            document.getElementById("playButton").addEventListener("click", playMusic, false);
+            document.getElementById("stopButton").addEventListener("click", stopMusic, false);
+            document.getElementById("muteButton").addEventListener("click", toggleMuteMusic, false);
+            document.getElementById("prevButton").addEventListener("click", prevSong, false);
+            document.getElementById("nextButton").addEventListener("click", nextSong, false);
+
+            player = document.getElementById("audioOut");
+            toggleMuteMusic();
+
+            // Audio events
+            player.addEventListener("error", audioError, false);
+            player.addEventListener("ended", mediaEnded, false);
+
+
+            durationOutput = document.getElementById("duration");
+            elapsedOutput = document.getElementById("elapsedOutput");
+        }
+
+        function mediaEnded() {
+            alert("The media has completed playing.");
+            durationOutput.innerHTML = "";
+            elapsedOutput.innerHTML = "";
+        }
+
+        function audioError() {
+            alert("The audio has errored!");
+        }
+
+        function playMusic() {
+            player.play();
+            durationOutput.innerHTML = Math.round(player.duration);
+            myInterval = setInterval(update, 500);
+        }
+
+        function stopMusic() {
+            player.pause();
+        }
+
+        function toggleMuteMusic() {
+
+            player.muted = !player.muted;
+            updateMuteButton();
+        }
+
+        function update() {
+            elapsedOutput.innerHTML = Math.round(player.currentTime);
+        }
+
+        function updateMuteButton() {
+            if (player.muted == true) {
+                document.getElementById("muteButton").innerHTML = "Unmute"
+            } else {
+                document.getElementById("muteButton").innerHTML = "Mute"
+            }
+        }
+
+        // function setSong(songIdx) {
+        //     alert("Song idx = " + songIdx);
+        // }
+
+        function setSong(songIdx) {
+            currentSong = songIdx;
+            var songSrc = "./media/" + getSongName();
+            player.pause();
+            player.src = songSrc;
+            player.play();
+            updateSongName();
+        }
+
+        function getSongName() {
+            return songs[currentSong];
+        }
+
+        function onError(error) {
+            alert("Error: " + error);
+        }
+
+
+        function prevSong() {
+            setSong((currentSong + 4 - 1) % 4);
+        }
+
+        function nextSong() {
+            setSong((currentSong + 1) % 4);
+        }
+
+        function updateSongName() {
+            document.getElementById("songNameOutput").innerHTML = getSongName();
+        }
+
+
+    </script>
+</head>
+<body>
+<div id="wrapper" style=">Wrapper
+                        <div id="banner" class="banner">
+<h1>Using Audio and Video</h1>
+
+</div>
+<div id="content" class="content">
+    <div id="nav" class="aside">
+        <dl type="none">
+            <dl class="strong"></string>Navigation</dl>
+            <dt><a href="home.html">Media and Api's Home</a></dt>
+        </dl>
+    </div>
+
+    <article>
+        <table>
+            <tr>
+                <td>
+                    <div class="content">
+                        <audio
+                            id="audioOut"
+                            controls="controls"
+                            preload="preload"
+                            <!-- loop="loop" -->
+                        >
+                            <source src="./media/Sleep%20Away.mp3" type="audio/mp3">
+                            HTML5 Audio is not supported
+                        </audio>
+                        <p>Duration: <output id="duration"></output></p>
+                        <p>Time Elapsed: <output id="elapsedOutput"></output></p>
+                        <p>Song Name: <output id="songNameOutput"></output></p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="playButton">Play</button>
+                    <button id="stopButton">Stop</button>
+                    <button id="muteButton">Mute</button>
+                    <button id="prevButton">Prev</button>
+                    <button id="nextButton">Next</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="content">
+                        <video id="videoOut">
+                            <source src="./media/Wildlife.mp3" type="video/mp4">
+                            <source src="./media/Wildlife.ogg" type="video/ogg">
+                            <source src="./media/Wildlife.wmv" type="video/wmv">
+                            HTML5 Video is not supported
+                        </video>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </article>
+</div>
+</body>
+</html>

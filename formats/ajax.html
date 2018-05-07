@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>AJAX</title>
+    <meta http-equiv="refresh" content="10">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is the main home page to all of my examples">
+    <style>
+        .banner {
+            height:100px;
+            width:100%;
+            background-color: darkgray;
+        }
+        .content {
+            height:100%;
+            width:100%;
+            background-color: gray;
+        }
+        .aside {
+            height: 100%;
+            float: left;
+            background-color: lightgray;
+            padding: 10px;
+        }
+        .strong {
+            font-weight: bold;
+            font-size: larger;
+        }
+
+    </style>
+    <script>
+        function loadById(ID) {
+            if (ID=="A1") {
+                loadContent("a1.html");
+            } else if (ID=="A2") {
+                loadContent("a2.html");
+            } else {
+                alert("We don't know what to do when we click on element with id " + ID + "!");
+            }
+        }
+        function loadContent(url) {
+            var imghttp = new XMLHttpRequest();
+            imghttp.onreadystatechange = function() {
+                if (imghttp.readyState==4 && imghttp.status==200) {
+                    document.getElementById("output").innerHTML = imghttp.responseText;
+                }
+            }
+            imghttp.open("GET", url);
+            imghttp.send();
+        }
+
+    </script>
+</head>
+<body>
+<div id="wrapper" style=">Wrapper
+                        <div id="banner" class="banner">
+<h1>Using AJAX</h1>
+
+</div>
+<div id="content" class="content">
+    <div id="nav" class="aside">
+        <dl type="none">
+            <dl class="strong"></string>Navigation</dl>
+            <dt><a href="home.html">Formats and AJAX</a></dt>
+        </dl>
+    </div>
+
+    <article>
+        <p class="strong">Content</p>
+        <section>
+            <table>
+                <tr>
+                    <button onclick="loadById(this.id)" id="A1">Load Avatar 1</button>
+                    <button onclick="loadById(this.id)" id="A2">Load Avatar 2</button>
+                </tr>
+                <tr>
+                    <div id="output">
+
+                    </div>
+                </tr>
+            </table>
+        </section>
+    </article>
+</div>
+</body>
+</html>
