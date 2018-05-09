@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Text Rotation</title>
+    <meta http-equiv="refresh" content="2">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is the main home page to all of my examples">
+    <a href="./styles/section_common.css" rel="stylesheet" type="text/css"/>
+    <style>
+        h2 {
+            font-family: Gotham, Helvetica, Arial;
+        }
+        .wraparound {
+            float: right;
+            margin-left: 10px;
+        }
+        .rotate {
+            -ms-transform: rotate(-45deg);   /* IE */
+            -webkit-transform: rotate(-45deg); /* chrome, safari */
+            transform: rotate(-45deg);  /* other */
+        }
+        .rdiv {
+            width: 150px;
+            height: 150px;
+            text-align: center;
+            line-height: 150px; /* positions the text vertically from the bottom */
+            position: relative;
+        }
+        #div1 {
+            background-color: yellow;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            z-index: 1;
+            left: 0px;
+            top: 0px;
+        }
+        #div2 {
+            background-color: orange;
+            transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+            z-index: 2;
+            left: 150px;
+            top: 0px;
+        }
+        #div3 {
+            background-color: red;
+            transform: rotate(66deg);
+            -webkit-transform: rotate(66deg);
+            z-index: 3;
+            left: 0px;
+            top: 150px;
+        }
+        #div4 {
+            background-color: blue;
+            transform: rotate(125deg);
+            -webkit-transform: rotate(125deg);
+            z-index: 4;
+            left: 50px;
+            top: 150px;
+
+        }
+        .postextAbsolute {
+            font-family: Calibri;
+            font-size: 18pt;
+            position: absolute;
+            left: 50px;
+            top: 100px;
+        }
+        .postextFixed {
+            font-family: Calibri;
+            font-size: 18pt;
+            position: fixed;
+            left: 50px;
+            top: 100px;
+        }
+        #div5 {
+            background-color: gray;
+            left: 50%;
+            top: 50%;
+            position: fixed;
+        }
+        #logo {
+            position: absolute;
+            top:70px;
+            left: 30px;
+            width: 450px;
+            height: 300px;
+            z-index: -1;
+        }
+        #overlap {
+            font-family: Calibri;
+            font-size: 50pt;
+            color: #0094ff;
+            font-weight: bold;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+    <script>
+    </script>
+</head>
+<body>
+<div id="wrapper" style=">Wrapper
+    <div id="banner" class="banner">
+<h1>Text Rotation</h1>
+</div>
+<div id="content" class="content">
+    <div id="nav" class="aside">
+        <dl type="none">
+            <dl class="strong"></string>Navigation</dl>
+            <dt><a href="home.html">HTML5 and CSS3</a></dt>
+        </dl>
+    </div>
+
+    <article>
+        <p class="strong">Content</p>
+        <section>
+            <div id="div1" class="rdiv">This is div1</div>
+            <div id="div2" class="rdiv">This is div2</div>
+            <div id="div3" class="rdiv">This is div3</div>
+            <div id="div4" class="rdiv">This is div4</div>
+        </section>
+        <section>
+            <div id="divR" class="rotate wraparound" style="width: 100px; height: 200px; text-align: center;">
+                <h2>Random English Text</h2>
+            </div>
+            <span class="postextAbsolute">The quick brown fox jumped over the lazy dogs.</span>
+            <span class="postextFixed">The quick brown fox jumped over the lazy dogs.</span>
+        </section>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+        <section>
+            <div id="div5" class="rdiv">This is div5</div>
+        </section>
+
+        <section>
+            <img id="logo" src="../images/Penguins.jpg">
+            <p id="overlap">Diallonics</p>
+        </section>
+    </article>
+</div>
+</body>
+</html>

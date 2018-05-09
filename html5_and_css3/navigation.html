@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>HTML5 and CSS3</title>
+        <meta http-equiv="refresh" content="2">
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
+        <meta name="author" content="Stuart Marr Erskine">
+        <meta name="description" content="This is the main home page to all of my examples">
+        <link rel="stylesheet" type="text/css" href="styles/section_common.css">
+        <style>
+            #wrapper {
+                width: 700px;
+                height: 700px;
+                background-color: orange;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            #banner {
+                width: 100%;
+                height: 100px;
+                background-color: red;
+                text-align: center;
+                line-height: 100px;
+            }
+            #nav {
+                width: 180px;
+                height: 400px;
+                background-color: yellow;
+                float: left;
+            }
+            #content {
+                width: 100%;
+                height: 400px;
+                background-color: green;
+            }
+            #footer {
+                width: 100%;
+                height: 100px;
+                background-color: gray;
+            }
+            #link0 {
+                color: black;
+            }
+            #link1 {
+                color: pink;
+            }
+            #link2 {
+                color: violet;
+            }
+            #link3 {
+                color: indigo;
+            }
+            #link4 {
+                color: blue;
+            }
+            div.selectable:hover {
+                background-color: white;
+                border: 1px solid black;
+            }
+            a {
+                text-decoration: none;
+                text-align: center;
+                font-family: Arial;
+                font-weight: bolder;
+                font-size: 17px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="banner">
+                <h1>Building a simple navigation page.</h1>
+            </div>
+            <div id="nav">
+                <a href="home.html"><div id="home" class="selectable">HTML5 and CSS3</div></a>
+                <a href="#"><div id="link1" class = "selectable">link 1</div></a>
+                <a href="#"><div id="link2" class = "selectable">link 2</div></a>
+                <a href="#"><div id="link3" class = "selectable">link 3</div></a>
+                <a href="#"><div id="link4" class = "selectable">link 4</div></a>
+            </div>
+            <div id="content">
+
+            </div>
+            <div id="footer">
+
+            </div>
+        </div>
+    </body>
+</html>

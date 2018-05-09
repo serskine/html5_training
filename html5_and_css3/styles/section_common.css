@@ -1,0 +1,28 @@
+.banner {
+    height:100px;
+    width:100%;
+    background-color: violet;
+    color: black;
+    font-family: Arial;
+    font-size: 25px;
+    text-align: center;
+}
+.content {
+    height:100%;
+    width:100%;
+    background-color: white;
+    font-family: Calibri;
+}
+.aside {
+    height: 100%;
+    float: left;
+    background-color: mediumvioletred;
+    font-family: Consolas;
+    padding: 10px;
+    margin: 0px 20px 15px 0px;
+    color: white;
+}
+.strong {
+    font-weight: bold;
+    font-size: larger;
+}
