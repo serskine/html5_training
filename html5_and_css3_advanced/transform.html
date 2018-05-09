@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Using Transform</title>
+    <meta http-equiv="refresh" content="2">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is the main home page to all of my examples">
+    <link rel="stylesheet" type="text/css" href="styles/section_common.css">
+    <style>
+        .sprite {
+            font-family: Calibri;
+            font-size: 20pt;
+            color: orange;
+            width: 150px;
+            height: 150px;
+            background-color: #ffd800;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 150px;
+            position: fixed;
+        }
+        #div1 {
+            top: 300px;
+            left: 50px;
+
+            transform: rotateZ(60deg);
+            -webkit-transform: rotateZ(60deg);
+            -ms-transform: rotateZ(60deg);
+
+        }
+        #div2 {
+            top: 300px;
+            left: 250px;
+            transform: rotate3d(100, 300, 100, 60deg);
+            -webkit-transform: rotate3d(100, 300, 100, 60deg);
+            -ms-transform: rotate3d(100, 300, 100, 60deg);
+        }
+        #div3 {
+            top: 300px;
+            left: 450px;
+            transform: matrix(
+                0.9, -0.3, 0.7,
+                0.8, 0.5, 0.5,
+                0.2, 0.3, 0.4
+            );
+
+            -webkit-transform: matrix(
+                0.9, -0.3, 0.7,
+                0.8, 0.5, 0.5,
+                0.2, 0.3, 0.4
+            );
+
+            -ms-transform: matrix(
+                0.9, -0.3, 0.7,
+                0.8, 0.5, 0.5,
+                0.2, 0.3, 0.4
+            );
+        }
+
+        #div4 {
+            top: 500px;
+            left: 50px;
+
+            transform: matrix3d(
+                    1, 0.5, 0.5, 0,
+                    0, 1.2, 0, 0,
+                    0, 0, 1.5, 0,
+                    0, 0, 0, 1
+            );
+
+            -webkit-transform: matrix3d(
+                    1, 0.5, 0.5, 0,
+                    0, 1.2, 0, 0,
+                    0, 0, 1.5, 0,
+                    0, 0, 0, 1
+            );
+
+            -ms-transform: matrix3d(
+                    1, 0.5, 0.5, 0,
+                    0, 1.2, 0, 0,
+                    0, 0, 1.5, 0,
+                    0, 0, 0, 1
+            );
+
+
+        }
+        #div5 {
+            top: 500px;
+            left: 250px;
+            -webkit-transform: scale3d(1, 2, 3);
+            -moz-transform: scale3d(1, 2, 3);;
+            -ms-transform: scale3d(1, 2, 3);;
+            -o-transform: scale3d(1, 2, 3);;
+            transform: scale3d(1, 2, 3);;
+        }
+        #div6 {
+            top: 500px;
+            left: 450px;
+            -webkit-transform: skewX(15deg);
+            -moz-transform: skewX(15deg);
+            -ms-transform: skewX(15deg);
+            -o-transform: skewX(15deg);
+            transform: skewX(15deg);
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">Wrapper
+    <div id="banner" class="banner">
+        <h1>Using Transformations</h1>
+    </div>
+    <div id="content" class="content">
+        <nav id="nav">
+            <dl type="none">
+                <dl>Navigation</dl>
+                <dt><a href="../index.html">Home</a></dt>
+            </dl>
+        </nav>
+
+        <article>
+            <div id="div1" class="sprite">This is div1</div>
+            <div id="div2" class="sprite">This is div2</div>
+            <div id="div3" class="sprite">This is div3</div>
+            <div id="div4" class="sprite">This is div4</div>
+            <div id="div5" class="sprite">This is div5</div>
+            <div id="div6" class="sprite">This is div6</div>
+            <div id="div7" class="sprite">This is div7</div>
+            <div id="div8" class="sprite">This is div8</div>
+            <div id="div9" class="sprite">This is div9</div>
+
+        </article>
+    </div>
+</div>
+</body>
+</html>

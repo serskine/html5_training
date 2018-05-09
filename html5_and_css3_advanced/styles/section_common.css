@@ -1,0 +1,45 @@
+.banner {
+    height:100px;
+    width:100%;
+    background-color: springgreen;
+    color: black;
+    font-family: Calibri;
+    font-size: 25px;
+    text-align: center;
+    line-height: 100px;
+}
+.content {
+    height:100%;
+    width:100%;
+    background-color: greenyellow;
+    font-family: Calibri;
+}
+.aside {
+    height: 100%;
+    float: left;
+    background-color: green;
+    font-family: Arial;
+    font-weight: bolder;
+    font-style: italic;
+    padding: 10px;
+    margin: 0px 20px 15px 0px;
+    color: white;
+}
+.strong {
+    font-weight: bold;
+    font-size: larger;
+}
+
+nav ul ol {
+    list-style: none;
+    background: linear-gradient(top, #ffd800 0%, #ff5a00 200%);
+    background: -ms-linear-gradient(top, #ffd800 0%, #ff5a00 200%);
+    background: -webkit-linear-gradient(top, #ffd800 0%, #ff5a00 200%);
+    background: -moz-linear-gradient(top, #ffd800 0%, #ff5a00 200%);
+    box-shadow: 0px 5px 15px #808080;
+    padding: 0 20px;
+    border-radius: 10px;
+    position: relative;
+    display: inline-table;
+}
+
