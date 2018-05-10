@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Scalable Vector Graphics</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="refresh" content="2">
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is the main home page to all of my examples">
+    <link rel="stylesheet" type="text/css" href="styles/section_common.css">
+    <style>
+        #contentArticle {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+        }
+        #rrect {
+            stroke: #000000;
+            stroke-width: 4px;
+            background-color: red;
+            -webkit-text-stroke-color: #0094ff;
+        }
+        svg {
+            border: 1px solid black;
+            width: 800px;
+            height: 400px;
+            position: absolute;
+        }
+        .pic {
+            height: 500px;
+            width: 800px;
+        }
+    </style>
+    <script src="scripts/section_common.js" type="javascript"></script>
+</head>
+<body>
+<div id="wrapper">Wrapper
+    <div id="banner" class="banner">
+        <h1 class="shadowheading grad">Scalable Vector Graphics</h1>
+    </div>
+    <div id="content" class="content">
+        <nav id="nav">
+            <dl type="none">
+                <dl>Navigation</dl>
+                <dt><a href="./home.html">Graphics and Javascript</a></dt>
+            </dl>
+        </nav>
+
+        <article id="contentArticle">
+            <div class="pic">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <text
+                        x="0"
+                        y="50"
+                        font-family="Verdana"
+                        font-size="55"
+                        fill="#0000ff"
+                    >
+                        Hello World
+                    </text>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <text
+                            x="10"
+                            y="45"
+                            font-family="Verdana"
+                            font-size="55"
+                            fill="#009900"
+                            transform="rotate(30,20,40)"
+                    >
+                        Hello World
+                    </text>
+                </svg>
+                <br/>
+            </div>
+
+            <div class="pic">
+                <svg id="redline">
+                    <line x1="50" y1="50"
+                          x2="300" y2="300"
+                          style="stroke: #FF0000; stroke-width: 3px"
+                    />
+                </svg>
+                <svg id="bigsquare">
+                    <rect id="rrect" x="0" y="0" width="300" height="300" fill="red"/>
+                </svg>
+            </div>
+            <div class="pic">
+                <svg>
+                    <rect x="0" y="0"
+                          width="300" height="300"
+                          fill="#ff00ff"
+                            style="stroke: #ABCDEF; stroke-width: 10px;"
+                    />
+                </svg>
+            </div>
+            <div class="pic">
+                <svg>
+                    <circle id="bcircle" cx="120" cy="100" r="100" fill="#0000ff"/>
+                </svg>
+            </div>
+            <div class="pic">
+                <svg>
+                    <circle id="elipse1" cx="200" cy="80" rx="100" ry="50" fill="yellow"/>
+                </svg>
+
+            </div>
+
+            <div class="pic">
+                <svg>
+                    <polygon points="   50, 0
+                                        100, 0,
+                                        150, 50,
+                                        150, 100,
+                                        100, 150,
+                                        50, 150,
+                                        0, 100,
+                                        0, 50"
+                             fill="#ff00ff"/>
+                </svg>
+            </div>
+
+            <div  class="pic">
+                <svg>
+                    <defs>
+                        <path id="path1" d="m75,20 A1,1 0 0, 0 500,0" />
+                    </defs>
+                    <text x="50" y="500" font-family="Arial" font-size="55" style="fill:red;">
+                        <textpath xlink:href="#path1">
+                            Hello great big world!
+                        </textpath>
+                    </text>
+                </svg>
+
+                <svg>
+                    <rect x="200" y="0"
+                          width="300" height="300"
+                          fill="#ff00ff"
+                          style="stroke: #ABCDEF; stroke-width: 10px; -webkit-transform: rotate(45deg)"
+                    />
+                </svg>
+            </div>
+
+            <div class="pic">
+                <svg>
+                    <defs>
+                        <path id="path1" d="m75,20 A1,1 0 0, 0 500,0" />
+                    </defs>
+                    <text x="50" y="500" font-family="Arial" font-size="55"
+                          style="fill:red; -webkit-transform: rotate(10deg);">
+                        <textpath xlink:href="#path1">
+                            Hello great big world!
+                        </textpath>
+                    </text>
+                </svg>
+            </div>
+            <div class="pic">
+                <svg>
+                    <circle cx="120" cy="120" r="80" fill="blue" opacity="0.2"/>
+                </svg>
+                <svg>
+                    <rect x="80" y="0" width="150" height="120" fill="green" opacity="0.5"/>
+                </svg>
+            </div>
+
+        </article>
+    </div>
+</div>
+</body>
+</html>
