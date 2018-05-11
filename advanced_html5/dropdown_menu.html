@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Editable Content</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="refresh" content="2">
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is the main home page to all of my examples">
+    <link rel="stylesheet" type="text/css" href="styles/section_common.css">
+    <style>
+        body {
+            font: normal 10pt Calibri;
+            width: 900px;
+            color: #6d6d6d;
+        }
+
+        #navBar {
+            margin: 0px;
+            padding: 4px 3px 0px;
+            line-height: 100%;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -o-border-radius: 10px;
+            -ms-border-radius: 10px;
+            background: linear-gradient(#a9a9a9a9, #333333);
+            -webkit-background: linear-gradient(#a9a9a9a9, #333333);
+            -mox-background: linear-gradient(#a9a9a9a9, #333333);
+            -ms-background: linear-gradient(#a9a9a9a9, #333333);
+            -o-background: linear-gradient(#a9a9a9a9, #333333);
+        }
+
+        #navBar li {
+            margin: 0 5px;
+            padding: 0 0 8px;
+            float: left;
+            position: relative;
+            list-style: none;
+        }
+
+        #navBar a {
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            padding: 8px 20px;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -o-border-radius: 10px;
+            -ms-border-radius: 10px;
+            text-shadow: 0 1px 1px #6d6d6d6d;
+        }
+    </style>
+    <script>
+        window.onload = function (event) {
+            document.getElementById("theTitle").innerHTML = document.getElementById("theBanner").innerHTML;
+        }
+    </script>
+</head>
+<body>
+<div id="wrapper">Wrapper
+    <div id="banner" class="banner">
+        <h1 class="shadowheading grad">Box Sizing</h1>
+    </div>
+    <div id="content" class="content">
+        <nav id="nav">
+            <dl type="none">
+                <dl>Navigation</dl>
+                <dt><a href="./home.html">Advanced HTML5</a></dt>
+            </dl>
+        </nav>
+
+
+        <article id="contentArticle">
+            <div>
+                <ul id="navBar">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a>
+                        <ul>
+                            <li><a href="#">The Company</a></li>
+                            <li><a href="#">The People</a>
+                                <ul>
+                                    <li><a hred="#">Our Employees</a></li>
+                                    <li><a hred="#">Out Management</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">The Board</a></li>
+                            <li><a href="#">Out History</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">FAQ</a>
+                        <ul>
+                            <li><a href="#">Who are we?</a></li>
+                            <li><a href="#">What services do we offer?</a>
+                                <ul>
+                                    <li><a href="#">Products</a></li>
+                                    <li><a href="#">Services</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">How can I learn more?</a></li>
+                            <li><a href="#">Where is the events calandar</a></li>
+                        </ul>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</div>
+</body>
+</html>

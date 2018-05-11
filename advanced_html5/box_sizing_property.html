@@ -9,6 +9,27 @@
     <meta name="description" content="This is the main home page to all of my examples">
     <link rel="stylesheet" type="text/css" href="styles/section_common.css">
     <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        div.container {
+            width: 300px;
+            height: 25px;
+            border: 10px solid black;
+        }
+
+        div.box {
+            boxsizing: border-box;
+            -ms-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-boxsizing: border-box;
+            -o-boxsizing: border-box;
+            width: 33%;
+            border: 1px solid red;
+            float: left;
+        }
 
     </style>
     <script>
@@ -21,7 +42,7 @@
 <body>
 <div id="wrapper">Wrapper
     <div id="banner" class="banner">
-        <h1 class="shadowheading grad">Editable Content</h1>
+        <h1 class="shadowheading grad">Box Sizing</h1>
     </div>
     <div id="content" class="content">
         <nav id="nav">
@@ -32,11 +53,12 @@
         </nav>
 
         <article id="contentArticle">
-            <ul contenteditable="true">
-                <li>Shop for groceries</li>
-                <li>Get oil changed for the car</li>
-                <li>Get supplies from the classroom</li>
-            </ul>
+            <div class="container">
+                <div class="box">Left</div>
+                <div class="box">Middle</div>
+                <div class="box">Right</div>
+
+            </div>
         </article>
     </div>
 </div>
