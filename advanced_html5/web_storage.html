@@ -38,8 +38,15 @@
             padding: 5px;
         }
 
+        .thumb {
+            height: 100px;
+            border: 2px solid black;
+            margin: 5px;
+        }
+
     </style>
     <script>
+
         window.onload = function (event) {
             document.getElementById("theTitle").innerHTML = document.getElementById("theBanner").innerHTML;
 
@@ -121,6 +128,7 @@
                 + "<th>type</th>"
                 + "<th>last modified</th>"
                 + "<th>num bytes</th>"
+                + "<th>thumbnail</th>"
                 + "</tr>";
 
             var fileList = evt.target.files;
@@ -131,16 +139,51 @@
                 row += "<td>" + fileList[i].type + "</td>";
                 row += "<td>" + fileList[i].lastModifiedDate + "</td>";
                 row += "<td>" + fileList[i].size + "</td>";
-                row += "</tr>";
 
                 outputTxt += row;
+
+                files = upped[i];
+
+                if (files.type.substring(0, 5) != "image") {
+                    alert("Not an image file!");
+                    return;
+                } else {
+                    var reader = new FileReader();
+
+                    reader.onload = (
+                        function (makethumb) {
+                            return function (e) {
+                                var span = document.createElement("span");
+
+                                var html = [
+                                    '<img class="thumb" src="',
+                                    e.target.result,
+                                    '" title="',
+                                    escape(makeThumb.name),
+                                    '"/>'
+                                ].join("");
+                                span.innerHTML = html;
+
+                                document.getElementById("list").insertBefore(span, null);
+
+                                row += "<td><pre>" + html + "</pre></td>";
+                            };
+                        }
+                    )(files);
+
+                    output += toJson(files);
+
+                    reader.readAsDataURL(files);
+                }
+
+                row += "</tr>"; // End of the table row
             }
 
             document.getElementById("output").innerHTML = outputTxt;
-        }
 
+
+        }
     </script>
-    s
 </head>
 <body>
 <div id="wrapper">Wrapper
@@ -160,10 +203,10 @@
             <button id="checkFileSupportButton" onclick="checkFileSupport()">Check File Support</button>
             <br>
             <input type="file" id="files" multiple/><br><br>
-            <span id="list"></span>
 
             <br><br>
-            <span id="output"></span>
+            <span id="output"></span><br/>
+            <span id="list"></span><br/>
         </article>
     </div>
 </div>
