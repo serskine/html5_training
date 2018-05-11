@@ -74,11 +74,11 @@ TABLE.tableRow = new function (headers, isHeader) {
     }
     row += XML.closeTag("tr");
     return row;
-},
+};
 
-    TABLE.dataRow = new function (columns) {
-        return tableRow(columns, false);
-    };
+TABLE.dataRow = new function (columns) {
+    return tableRow(columns, false);
+};
 
 TABLE.headerRow = new function (columns) {
     return tableRow(columns, true);
