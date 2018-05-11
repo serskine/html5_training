@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sprites</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is the main home page to all of my examples">
+    <link rel="stylesheet" type="text/css" href="styles/section_common.css">
+    <style>
+        #myCanvas {
+            border: 5px solid black;
+            margin: 0px;
+            background-color: lightskyblue;
+            opacity: 1;
+        }
+
+        p {
+            color: black;
+            opacity: 1;
+        }
+    </style>
+
+    <script>
+        var theSprite = {
+            x: 0, y: 0,
+            width: 100,
+            height: 100,
+            borderWidth: 1
+        };
+        var canvas;
+        var ctx;
+
+        window.onload = function () {
+            canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d");
+
+            ctx.canvas.width = window.innerWidth;
+            ctx.canvas.height = window.innerHeight;
+
+            makeMsg(0, 0, "initial");
+
+            window.addEventListener(
+                "mousemove",
+                function (event) {
+                    var rect = canvas.getBoundingClientRect();
+                    var x = event.clientX - rect.left;
+                    var y = event.clientY - rect.top;
+
+                    var width = 100;
+                    var height = 100;
+                    theSprite = updateSprite(x - width / 2, y - height / 2, width, height, 1);
+                    makeMsg(x, y, "moved");
+                },
+                false
+            );
+        }
+
+        function makeMsg(x, y, txt) {
+            var message = "<p>X: " + x + " Y: " + y + "<br/>" + ((txt) ? txt : "no message") + "</p>";
+            console.debug(message);
+            document.getElementById("msgOut").innerHTML = message;
+
+            var spriteJson = "<pre>" + toJson(theSprite) + "</pre>";
+            document.getElementById("spriteOut").innerHTML = spriteJson;
+
+            writeMessage(message, x, y, ctx);
+        }
+
+        function clearIt() {
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        }
+
+        function updateSprite(newX, newY, newW, newH, newBorderWidth) {
+            theSprite.old = theSprite.current;
+            theSprite.current = {
+                x: newX,
+                y: newY,
+                width: newW,
+                height: newH,
+                borderWidth: newBorderWidth
+            };
+            renderSprite(theSprite, ctx);
+            return theSprite;
+        }
+
+        function renderSprite(sprite, ctx) {
+            clearRectangle(sprite.old, ctx);
+            drawRectangle(sprite.current, ctx);
+        }
+
+        function clearRectangle(myRect, ctx) {
+            if (myRect) {
+                var frame = myRect.borderWidth;
+                ctx.clearRect(
+                    myRect.x - frame,
+                    myRect.y - frame,
+                    myRect.width + (2 * frame),
+                    myRect.height + (2 * frame)
+                );
+            }
+        }
+
+        function drawRectangle(myRect, ctx) {
+            if (myRect) {
+                ctx.beginPath();
+                ctx.rect(
+                    myRect.x,
+                    myRect.y,
+                    myRect.width,
+                    myRect.height
+                );
+                ctx.fillStyle = "#ff0000";
+                ctx.fill();
+                ctx.lineWidth = myRect.borderWidth;
+                ctx.strokeStyle = "black";
+                ctx.stroke();
+            }
+        }
+
+        function writeMessage(message, x, y, ctx) {
+            ctx.beginPath();
+            ctx.font = "14pt Calibri";
+            ctx.fillStyle = "#000000";
+
+            ctx.fillText(message, x, y, 100);
+            ctx.stroke();
+        }
+
+        function toJson(item) {
+            return JSON.stringify(item, undefined, 2);
+        }
+
+    </script>
+</head>
+<body>
+<div id="wrapper">Wrapper
+    <div id="banner" class="banner">
+        <h1 class="shadowheading grad">Sprites</h1>
+    </div>
+    <div id="content" class="content">
+        <nav id="nav">
+            <dl type="none">
+                <dl>Navigation</dl>
+                <dt><a href="./home.html">Graphics and Javascript</a></dt>
+            </dl>
+        </nav>
+
+        <article id="contentArticle">
+            <div>
+                <canvas id="myCanvas" width="500px" height="500px"></canvas>
+            </div>
+            <br/>
+            <output id="msgOut">OUTPUT</output>
+            <br/>
+            <output id="spriteOut">OUTPUT</output>
+            <br/>
+        </article>
+    </div>
+</div>
+</body>
+</html>

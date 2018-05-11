@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sprites</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is the main home page to all of my examples">
+    <link rel="stylesheet" type="text/css" href="styles/section_common.css">
+    <style>
+        #myCanvas {
+            border: 5px solid black;
+            margin: 0px;
+            width: 500px;
+            height: 300px;
+            background-color: lightskyblue;
+            opacity: 0.5;
+        }
+
+        p {
+            color: black;
+            opacity: 1;
+        }
+    </style>
+
+    <script>
+        var canvas;
+        var ctx;
+
+        var old = {x: 0, y: 0};
+        var current = {x: 0, y: 0};
+
+        window.onload = function () {
+            canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d");
+        }
+
+        function getCoords() {
+            var x = document.getElementById("xLoc").value;
+            var y = document.getElementById("yLoc").value;
+            return {x: x, y: y};
+        }
+
+        function doIt() {
+            old = current;
+            current = getCoords();
+
+            ctx.clearRect(old.x, old.y, 100, 100);
+            ctx.fillRect(current.x, current.y, 100, 100,)
+
+            sprite = {
+                x: current.x,
+                y: current.y,
+                width: 100,
+                height: 100,
+                borderWidth: 2
+            };
+            drawSprite(sprite);
+        }
+
+        function drawSprite(rect, ctx) {
+            ctx.beginPath();
+            ctx.rect(rect.x, rect.y, rect.width, rect.height);
+            ctx.fillStyle = red;
+            ctx.fill();
+            ctx.lineWidth = rect.borderWidth;
+            ctx.strokeStyle = "black";
+            ctx.stroke();
+        }
+
+        function clearIt() {
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        }
+
+    </script>
+</head>
+<body>
+<div id="wrapper">Wrapper
+    <div id="banner" class="banner">
+        <h1 class="shadowheading grad">Sprites</h1>
+    </div>
+    <div id="content" class="content">
+        <nav id="nav">
+            <dl type="none">
+                <dl>Navigation</dl>
+                <dt><a href="./home.html">Graphics and Javascript</a></dt>
+            </dl>
+        </nav>
+
+        <article id="contentArticle">
+            <div>
+                <canvas id="myCanvas"/>
+            </div>
+            <br/>
+            <p> X <input type="text" id="xLoc" size="5"/>
+                Y <input type="text" id="yLoc" size="5"/>
+            </p>
+            <p>
+                <button onclick="doIt()">GO</button>
+                <button onclick="clearIt()">CLEAR</button>
+            </p>
+            <p><span id="output"></span></p>
+        </article>
+    </div>
+</div>
+</body>
+</html>
