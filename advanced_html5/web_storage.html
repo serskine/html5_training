@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title id="theTitle">Editable Content</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is the main home page to all of my examples">
+    <link rel="stylesheet" type="text/css" href="styles/section_common.css">
+    <style>
+        table {
+            border: 2px solid black;
+        }
+
+        th {
+            minWidth: 200px;
+            border: none;
+            font-family: Calibri;
+            font-size: medium;
+            font-weight: bold;
+            border-top: none;
+            border-left: 1px solid black;
+            border-right: none;
+            border-bottom: 1px solid black;
+            padding: 1px;
+            text-align: center;
+        }
+
+        td {
+            font-weight: normal;
+            font-size: medium;
+            border: none;
+            border-top: none;
+            border-left: 1px solid black;
+            border-right: none;
+            border-bottom: none;
+            text-align: left;
+            padding: 5px;
+        }
+
+    </style>
+    <script>
+        window.onload = function (event) {
+            document.getElementById("theTitle").innerHTML = document.getElementById("theBanner").innerHTML;
+
+            document.getElementById("files").addEventListener("change", fileSelect, false);
+        }
+
+        function yesNo(obj) {
+            if (obj) {
+                return (obj == true) ? "Yes" : "No";
+            } else {
+                return "No";
+            }
+        }
+
+        function existsYesNo(obj) {
+            if (obj) {
+                return "Yes";
+            } else {
+                return "No";
+            }
+        }
+
+        function add() {
+
+            var current = localStorage.getItem("toggle");
+            current += "_1";
+            localStorage.setItem("toggle", current);
+
+            result = localStorage.getItem("toggle");
+            document.getElementById("output").innerHTML = result;
+        }
+
+        function keyValueRow(key, value) {
+            return "<tr><td>" + key + "</td><td>" + value + "</td></tr>"
+        }
+
+        function checkFileSupport() {
+            var outputTxt = "<strong>Checking file system support </strong><br/>";
+
+            outputTxt += "<table><tr><th>Method</th><th>Yes / No</th></tr>";
+            outputTxt += keyValueRow("window.File", existsYesNo(window.File));
+            outputTxt += keyValueRow("window.FileReader", existsYesNo(window.FileReader));
+            outputTxt += keyValueRow("window.FileList", existsYesNo(window.FileList));
+            outputTxt += keyValueRow("window.Blob", existsYesNo(window.Blob));
+            outputTxt += "</table>"
+
+            if (window.File) {
+                outputTxt += "window.File is supported <br/>";
+            } else {
+                outputTxt += "window.File is not supported <br/>";
+            }
+
+            if (window.FileReader) {
+                outputTxt += "window.FileReader is supported <br/>";
+            } else {
+                outputTxt += "window.FileReader is not supported <br/>";
+            }
+
+            if (window.FileList) {
+                outputTxt += "window.FileList is supported <br/>";
+            } else {
+                outputTxt += "window.FileList is not supported <br/>";
+            }
+
+            if (window.Blob) {
+                outputTxt += "window.Blob is supported <br/>";
+            } else {
+                outputTxt += "window.Blob is not supported <br/>";
+            }
+            document.getElementById("output").innerHTML = outputTxt;
+        }
+
+        function fileSelect(evt) {
+            var upped = evt.target.files;   // File list object
+
+            var outputTxt = "<table>"
+                + "<tr>"
+                + "<th>filename</th>"
+                + "<th>type</th>"
+                + "<th>last modified</th>"
+                + "<th>num bytes</th>"
+                + "</tr>";
+
+            var fileList = evt.target.files;
+
+            for (var i = 0; i < fileList.length; i++) {
+                var row = "<tr>";
+                row += "<td>" + fileList[i].name + "</td>";
+                row += "<td>" + fileList[i].type + "</td>";
+                row += "<td>" + fileList[i].lastModifiedDate + "</td>";
+                row += "<td>" + fileList[i].size + "</td>";
+                row += "</tr>";
+
+                outputTxt += row;
+            }
+
+            document.getElementById("output").innerHTML = outputTxt;
+        }
+
+    </script>
+    s
+</head>
+<body>
+<div id="wrapper">Wrapper
+    <div id="banner" class="banner">
+        <h1 id="theBanner" class="shadowheading grad">Web Storage</h1>
+    </div>
+    <div id="content" class="content">
+        <nav id="nav">
+            <dl type="none">
+                <dl>Navigation</dl>
+                <dt><a href="./home.html">Advanced HTML5</a></dt>
+            </dl>
+        </nav>
+
+        <article id="contentArticle">
+            <button id="addButton" onclick="add()">GO</button>
+            <button id="checkFileSupportButton" onclick="checkFileSupport()">Check File Support</button>
+            <br>
+            <input type="file" id="files" multiple/><br><br>
+            <span id="list"></span>
+
+            <br><br>
+            <span id="output"></span>
+        </article>
+    </div>
+</div>
+</body>
+</html>

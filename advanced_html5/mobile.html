@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title id="theTitle">Editable Content</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is the main home page to all of my examples">
+
+    <!-- important for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" type="text/css" href="styles/section_common.css">
+    <style>
+        table {
+            border: 2px solid black;
+        }
+
+        th {
+            minWidth: 200px;
+            border: none;
+            font-family: Calibri;
+            font-size: medium;
+            font-weight: bold;
+            border-top: none;
+            border-left: 1px solid black;
+            border-right: none;
+            border-bottom: 1px solid black;
+            padding: 1px;
+            text-align: center;
+        }
+
+        td {
+            font-weight: normal;
+            font-size: medium;
+            border: none;
+            border-top: none;
+            border-left: 1px solid black;
+            border-right: none;
+            border-bottom: none;
+            text-align: left;
+            padding: 5px;
+        }
+
+        @media screen and (orientation: portrait) {
+            /* Portrait styles only */
+        }
+
+        @media screen and (orientation: landscape) {
+            /* landscape styles only */
+        }
+
+    </style>
+    <script>
+        window.onload = function (event) {
+            document.getElementById("theTitle").innerHTML = document.getElementById("theBanner").innerHTML;
+        }
+
+        function yesNo(obj) {
+            if (obj) {
+                return (obj == true) ? "Yes" : "No";
+            } else {
+                return "No";
+            }
+        }
+
+
+        function checkDisplayResolution() {
+            var W = window.screen.availWidth;
+            var H = window.screen.availHeight;
+            document.getElementById("output").innerHTML = "Width: " + W + " Height: " + H;
+        }
+
+        screen.addEventListener("orientationchange", function () {
+            // Not preferred because it uses javascript, but it will work.
+        });
+
+    </script>
+</head>
+<body>
+<div id="wrapper">Wrapper
+    <div id="banner" class="banner">
+        <h1 id="theBanner" class="shadowheading grad">Mobile Device Page Tips</h1>
+    </div>
+    <div id="content" class="content">
+        <nav id="nav">
+            <dl type="none">
+                <dl>Navigation</dl>
+                <dt><a href="./home.html">Advanced HTML5</a></dt>
+            </dl>
+        </nav>
+
+        <article id="contentArticle">
+            <p>Tips for developing for mobile devices</p>
+            <ol>
+                <li>Don't try to replicate the main page for mobile devices</li>
+                <li>Don't use large images that take a long time to load.</li>
+                <li>Try to avoid javascript, php etc</li>
+                <li>Stick with plain HTML5 whenever possible.</li>
+                <li>Don't use tables and instead use one long scrolling site</li>
+                <li>Add meta tag</li>
+                <li>Use CSS whenever possible</li>
+            </ol>
+            <!-- used on a phone will allow them to dial that number, no effect on a computer -->
+            <a href="tel:+19028027687">SoupThatIsThick 1-902-802-7687</a>
+            <p>
+                <button id="checkDisplay" onclick="checkDisplayResolution()">Check Display Resolution</button>
+            </p>
+            <p>
+                <output id="output"></output>
+            </p>
+        </article>
+    </div>
+</div>
+</body>
+</html>
