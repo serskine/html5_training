@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title id="theTitle">Capturing User Input</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is the main home page to all of my examples">
+    <link rel="stylesheet" type="text/css" href="styles/section_common.css">
+    <style>
+        body {
+            font-family: Consolas;
+        }
+
+        input {
+            width: 250px;
+            font-family: Calibri;
+        }
+
+        #username {
+            color: darkorange;
+            background-color: #ff0000;
+        }
+
+        input {
+            font-family: Calibri;
+            font-size: 10pt;
+        }
+
+        #submit2 {
+            background-color: orange;
+            color: blue;
+            font-size: 20pt;
+        }
+    </style>
+
+    <!-- local styles to this page -->
+
+    <!-- local scripts for this page -->
+    <script type="text/javascript" src="scripts/section_common.js"></script>
+    <script type="text/javascript">
+        function checkYesNo() {
+            var result = confirm("Click to confirm");
+            document.getElementById("output").innerHTML = (result) ? "Confirming..." : "Cancelling...";
+        }
+
+        function nameMe() {
+            var result = prompt("Enter your name to continue");
+            document.getElementById("output").innerHTML = "Welcome to our website, " + result;
+        }
+
+        function submitForm1() {
+            var elem = document.forms[0];
+            var outputTxt = "";
+            // We skip the last element because it's a submit button. We don't want it's data
+            for (var i = 0; i < elem.length - 1; i++) {
+                var formData = new Array;
+                formData[i] = elem[i].value + "<br/>";
+                outputTxt += formData[i];
+            }
+            document.getElementById("output").innerHTML = outputTxt;
+        }
+
+        function modifyForms() {
+            var elem = document.forms[0];
+            elem[3].value = "555-555-5555";
+
+            if (elem[4].type != "text") {
+                elem[4].type = "text";
+            } else {
+                elem[4].type = "submit";
+            }
+            elem[4].value = "Submit form1 is type " + elem[4].type + ".";
+
+        }
+
+        function checkInput() {
+            var x;
+            var numInp = document.getElementById("num1").value;
+
+            // create the regex for decimal numbers
+            var validNums = /[0-9.]/;
+            if (numInp.match(validNums)) {
+                x = true;
+                document.getElementById("output").innerHTML = "Thank you!";
+                return x;
+            } else {
+                x = false;
+                alert("Please enter valid decimal numbers only!");
+                return x;
+            }
+        }
+
+        window.onload = function (evt) {
+            document.getElementById("theTitle").innerHTML = document.getElementById("theBanner").innerHTML;
+        }
+    </script>
+</head>
+<body>
+<div id="wrapper">Wrapper
+    <div id="banner" class="banner">
+        <h1 id="theBanner" class="shadowheading grad">Capturing User Input</h1>
+    </div>
+    <div id="content" class="content">
+        <nav id="nav">
+            <dl type="none">
+                <dl>Navigation</dl>
+                <dt><a href="./home.html">Advanced Features</a></dt>
+            </dl>
+        </nav>
+
+        <article id="contentArticle">
+            <input type="button" onclick="checkYesNo()" value="Submit Confirmation (Y/N)"/>
+            <input type="button" onclick="nameMe()" value="Submit Name"/>
+            <input type="button" onclick="modifyForms()" value="Modify Forms"/>
+            <form name="form1">
+                Name: <input type="text" id="name"><br/>
+                Address: <input type="text" id="address"><br/>
+                Email: <input type="text" id="email"><br/>
+                Phone: <input type="text" id="phone"><br/>
+                <input type="button" onclick="submitForm1()" value="Submit Form 1"/><br><br>
+            </form>
+            <form name="form2">
+                <input type="text" id="num1" name="num1"/>
+                <input type="submit" value="Submit num now" onclick="checkInput()"/>
+                <br><br>
+            </form>
+            <form name="form2">
+                <input type="text" id="username" name="username"/>
+                <input type="password" id="password" name="password"/>
+                <input type="submit" value="Submit num now" onclick="checkInput()"/>
+                <br><br>
+            </form>
+
+            <input id="submit2" type="submit" value="Go do it!"/>
+
+            <p id="output"></p>
+        </article>
+    </div>
+</div>
+</body>
+</html>

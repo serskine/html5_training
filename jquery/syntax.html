@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>JQuery Syntax</title>
+    <!--<meta http-equiv="refresh" content="10">-->
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is the main home page to all of my examples">
+
+    <link rel="stylesheet" type="text/css" href="styles/section_common.css">
+    <style src="scripts/section_common.js"></style>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        var isBig = false;
+        var $q = jQuery.noConflict();
+
+        $q(document).ready(function () {
+
+            $q("#clickMeButton").click(function () {
+                isBig = !isBig;
+                if (isBig) {
+                    $q("#myDiv")    // Looks for id myDiv
+                        .css("width", "200")
+                        .css("height", "200");
+                } else {
+                    $q("#myDiv")    // Looks for id myDiv
+                        .css("width", "300")
+                        .css("height", "300");
+
+                }
+            });
+
+            $q("#button1").click(function () {
+                alert("ID Selector!");
+            })
+
+            $q(".myButton").click(function () {
+                alert("Class Selector!");
+            })
+
+            // animate and binding events
+            $q("#myDiv2").on("div:toggle", function (event) {
+                $q("#myDiv2")
+                    .css("background-color", "red")
+                    .animate({left: '250px'});
+            });
+
+            $q("#clickMeButton2").click(function () {
+                $q("#myDiv2").trigger("div:toggle");
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div id="banner" class="banner">
+    <h1>JQuery Syntax</h1>
+</div>
+<div id="content" class="content">
+    <nav id="navBar">
+        <dl type="none">
+            <dl>Navigation</dl>
+            <dt><a href="./home.html">JQuery Home</a></dt>
+        </dl>
+    </nav>
+
+    <article>
+        <button id="clickMeButton">Click Me</button>
+        <div id="myDiv" style="width: 200px; height: 200px; border: 1px solid black; text-align: center">
+            Watch me move!
+        </div>
+        <button id="button1">Button 1</button>
+        <button class="myButton">Button 2</button>
+        <div id="myDiv2" style="width: 200px; height: 200px; border: 1px solid black; text-align: center">
+            Watch me move!
+        </div>
+        <button id="clickMeButton2">Click Me 2</button>
+        <p id="output"></p>
+    </article>
+</div>
+</body>
+</html>

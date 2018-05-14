@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title id="theTitle">Table Builder</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <!--<meta http-equiv="refresh" content="20">-->
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is the main home page to all of my examples">
+    <link rel="stylesheet" type="text/css" href="styles/section_common.css">
+
+
+    <!-- local styles to this page -->
+
+    <!-- local scripts for this page -->
+    <script type="text/javascript" src="scripts/section_common.js"></script>
+    <script type="text/javascript">
+
+        function showObject() {
+            theObj = createRandomObject(4);
+
+            outputTxt = "<pre>" + toJson(theObj) + "</pre>";
+            objTable = createTableFromObject(theObj);
+            outputTxt = objTable.getHtml();
+            document.getElementById("output").innerHTML = outputTxt
+        }
+
+        function createRandomObject(seed) {
+            var theCase = Math.floor(Math.random() * 3) + seed;
+            if (theCase < 3) {
+                return createRandomValue(seed - 1);
+            } else if (theCase < 3) {
+                return createRandomArray(seed - 1);
+            } else {
+                return {
+                    item_1: createRandomObject(seed - 1),
+                    item_2: createRandomObject(seed - 2)
+                };
+            }
+        }
+
+        function createRandomValue(seed) {
+            return "Value_" + Math.floor(Math.random() * 10);
+        }
+
+        function createRandomArray(seed) {
+            numElem = Math.floor(Math.random() * 3);
+            obj = [];
+            for (i = 0; i < numElem; i++) {
+                obj.push(createRandomObject(seed - 1));
+            }
+            return obj;
+        }
+
+        function showXml() {
+            var output = "";
+
+            output += XML.openTag("OPEN") + "<br/>";
+            output += XML.closeTag("CLOSE") + "<br/>";
+
+            console.log(output);
+            document.getElementById("output").innerHTML = "<pre>" + output + "</pre>";
+        }
+
+        function showTable() {
+
+            var numCols = Math.floor(Math.random() * 20);
+            var numRows = Math.floor(Math.random() * 10 + numCols / 2);
+
+            var outputTxt = "";
+
+            var headers = [];
+            for (col = 0; col < numCols; col++) {
+                headers.push(("header_" + col));
+            }
+
+            var theTable = new Table(headers);
+
+            for (row = 0; row < numRows; row++) {
+                var theRow = [];
+
+                for (col = 0; col < numCols; col++) {
+                    theRow.push(("(" + row + ", " + col + ")"));
+                }
+                theTable.add(theRow);
+            }
+
+            outputTxt = theTable.getHtml();
+
+            console.log(output);
+            document.getElementById("output").innerHTML = outputTxt;
+        }
+
+        window.onload = function (evt) {
+            document.getElementById("theTitle").innerHTML = document.getElementById("theBanner").innerHTML;
+        }
+    </script>
+</head>
+<body>
+<div id="wrapper">Wrapper
+    <div id="banner" class="banner">
+        <h1 id="theBanner" class="shadowheading grad">Using the Table Builder</h1>
+    </div>
+    <div id="content" class="content">
+        <nav id="nav">
+            <dl type="none">
+                <dl>Navigation</dl>
+                <dt><a href="./home.html">Advanced Features</a></dt>
+            </dl>
+        </nav>
+
+        <article id="contentArticle">
+            <button id="displayXmlButton" onclick="showXml()">Show Xml</button>
+            <button id="displayTableButton" onclick="showTable()">Show Table</button>
+            <button id="displayObjectButton" onclick="showObject()">Show Object in table</button>
+            <br><br>
+            <span id="output"></span>
+        </article>
+    </div>
+</div>
+</body>
+</html>

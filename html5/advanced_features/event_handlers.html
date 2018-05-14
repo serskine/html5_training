@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title id="theTitle">Capturing User Input</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is the main home page to all of my examples">
+    <link rel="stylesheet" type="text/css" href="styles/section_common.css">
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background-color: #ffd000;
+        }
+
+        #myDiv {
+            width: 200px;
+            height: 40px;
+            background-color: #ffd000;
+        }
+    </style>
+
+    <!-- local styles to this page -->
+
+    <!-- local scripts for this page -->
+    <script type="text/javascript" src="scripts/section_common.js"></script>
+    <script type="text/javascript">
+        function clickDiv(box) {
+            alert(box.id);
+        }
+
+        function dblClick() {
+            alert("You double clicked");
+        }
+
+        function submit(file) {
+            alert(file);
+        }
+
+        function react() {
+            document.getElementById("output").innerHTML = "STAY OUT OF MY DIV!";
+        }
+
+        function processClick(event) {
+            document.getElementById("output").innerHTML = toJson(event)
+            console.log(event);
+            var outputTxt = "";
+            outputTxt += event.timestamp + "<br/>";
+            outputTxt += "X: " + event.pageX + "<br/>";
+            outputTxt += "Y: " + event.pageY + "<br/>";
+
+            document.getElementById("output").innerHTML = outputTxt;
+        }
+
+        function pressMe(event) {
+            var callerId = event.target.id;
+            alert("This event was called by " + callerId + ".");
+        }
+
+
+        window.onload = function (evt) {
+            document.getElementById("theTitle").innerHTML = document.getElementById("theBanner").innerHTML;
+
+            var myDiv = document.getElementById("myDiv");
+            myDiv.addEventListener(
+                "mouseover",
+                react,
+                false
+            );
+            myDiv.addEventListener(
+                "click",
+                processClick,
+                false
+            );
+            document.getElementById("pressMe").addEventListener("click", pressMe, false);
+            document.getElementById("pushMe").addEventListener("click", pressMe, false);
+        }
+    </script>
+</head>
+<body>
+<div id="wrapper">Wrapper
+    <div id="banner" class="banner">
+        <h1 id="theBanner" class="shadowheading grad">Event Handlers</h1>
+    </div>
+    <div id="content" class="content">
+        <nav id="nav">
+            <dl type="none">
+                <dl>Navigation</dl>
+                <dt><a href="./home.html">Advanced Features</a></dt>
+            </dl>
+        </nav>
+
+        <article id="contentArticle">
+            <div id="div1" onclick="clickDiv(this)"></div>
+            <br/><br/>
+            <button ondblclick="dblClick()">Double-click me</button>
+            <br/><br/>
+            <input type="file" onchange="submit(this)"/>
+            <br/><br/>
+            <div id="myDiv">
+                <p>The quick brown fox jumped over the lazy dogs.</p>
+            </div>
+            <div id="eventInfo">
+
+            </div>
+
+            <button id="pressMe">PRESS ME</button>
+            <button id="pushMe">PUSH ME</button>
+
+            <p id="output"></p>
+
+        </article>
+    </div>
+</div>
+</body>
+</html>

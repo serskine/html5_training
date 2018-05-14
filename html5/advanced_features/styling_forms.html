@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title id="theTitle">Styling Forms</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta name="author" content="Stuart Marr Erskine">
+    <meta name="description" content="This is the main home page to all of my examples">
+    <link rel="stylesheet" type="text/css" href="styles/section_common.css">
+    <style>
+        form {
+            font-family: Calibri;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 0px 1px 1px black;
+            width: 250px;
+            height: 200px;
+            padding: 15px;
+            border: 1px solid black;
+            -ms-border-radius: 20px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 25px #000000;
+            background-image: url("../images/avatar_1.png");
+        }
+
+        input {
+            width: 180px;
+            background-color: #ff6a00;
+            padding: 6px;
+            margin-bottom: 10px;
+            border-top: 1px solid #ff6a05;
+            border-left: 0px;
+            border-right: 0px;
+            border-bottom: 0px;
+            border-radius: 5px;
+            -ms-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            background: linear-gradient(top, #ffd800 0%, #ff6a00 200%);
+            background: -ms-linear-gradient(top, #ffd800 0%, #ff6a00 200%);
+            background: -webkit-linear-gradient(top, #ffd800 0%, #ff6a00 200%);
+            background: -moz-linear-gradient(top, #ffd800 0%, #ff6a00 200%);
+            background: -o-linear-gradient(top, #ffd800 0%, #ff6a00 200%);
+            box-shadow: 0px 5px 25px #000000;
+        }
+
+        #submitButton1 {
+            /* margin-top: 50px; */
+            width: 200px;
+            float: right;
+            font-family: Calibri;
+            font-weight: bold;
+            font-size: 18pt;
+            color: #ffffff;
+            text-shadow: 0px 1px 1px black;
+            -ms-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            background: linear-gradient(top, #ffd800 0%, #ff6a00 200%);
+            background: -ms-linear-gradient(top, #ffd800 0%, #ff6a00 200%);
+            background: -webkit-linear-gradient(top, #ffd800 0%, #ff6a00 200%);
+            background: -moz-linear-gradient(top, #ffd800 0%, #ff6a00 200%);
+            background: -o-linear-gradient(top, #ffd800 0%, #ff6a00 200%);
+            box-shadow: 0px 5px 25px #000000;
+
+        }
+    </style>
+
+    <!-- local styles to this page -->
+
+    <!-- local scripts for this page -->
+    <script type="text/javascript" src="scripts/section_common.js"></script>
+    <script type="text/javascript">
+        function submitForm1() {
+            var elem = document.forms[0];
+            var outputTxt = "";
+            // We skip the last element because it's a submit button. We don't want it's data
+            for (var i = 0; i < elem.length - 1; i++) {
+                var formData = new Array;
+                formData[i] = elem[i].value + "<br/>";
+                outputTxt += formData[i];
+            }
+            document.getElementById("output").innerHTML = outputTxt;
+        }
+
+        window.onload = function (evt) {
+            document.getElementById("theTitle").innerHTML = document.getElementById("theBanner").innerHTML;
+        }
+    </script>
+</head>
+<body>
+<div id="wrapper">Wrapper
+    <div id="banner" class="banner">
+        <h1 id="theBanner" class="shadowheading grad">Styling Forms</h1>
+    </div>
+    <div id="content" class="content">
+        <nav id="nav">
+            <dl type="none">
+                <dl>Navigation</dl>
+                <dt><a href="./home.html">Advanced Features</a></dt>
+            </dl>
+        </nav>
+
+        <article id="contentArticle">
+            <input type="button" onclick="modifyForms()" value="Modify Forms"/>
+            <form name="form1">
+                Username: <input type="text" id="username"><br/>
+                Password: <input type="password" id="password"><br/>
+                <input id="submitButton1" type="button" onclick="submitForm1()" value="Submit Form 1"/><br><br>
+            </form>
+            <p id="output"></p>
+        </article>
+    </div>
+</div>
+</body>
+</html>
